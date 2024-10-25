@@ -1,0 +1,18 @@
+.fullLayout{
+    display: flex;
+    flex-direction: row;
+    /* Make so that the first element takes a third of the window and the rest takes the remaining space */
+    height: 100vh;
+
+}
+
+.sideBarContainer{
+    background-color: var(--alt-background-color);
+    flex:1;
+    min-width: 250px; 
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.2); 
+}
+
+.contentWindowContainer{
+    flex:4;
+}

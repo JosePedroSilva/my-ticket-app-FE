@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Dashboard from './Components/Dashboard/'
-import Layout from './Components/Layout'
+import SideBar from './Components/SideBar'
 
 const router = createBrowserRouter([
   {
@@ -13,9 +13,9 @@ function App() {
 
   return (
     <>
-      <Layout>
+      <SideBar>
         <RouterProvider router={router} />
-      </Layout>
+      </SideBar>
     </>
   )
 }
