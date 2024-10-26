@@ -2,11 +2,20 @@
 
 /* Variable CSS declarations */
 :root {
-    --background-color: #FFFFFF;
-    --alt-background-color: #E1E5F2;
-    --text-color: #022B3A;
-    --accent-color: #1F7A8C;
-    --font-family: 'Roboto', sans-serif;
+  --font-family: 'Roboto', sans-serif;
+
+  /* Base colors */
+  --color-background: #FFFFFF;
+  --color-alt-background: #E1E5F2;
+  --color-text: #022B3A;
+  --color-accent: #1F7A8C;
+
+  --font-size-xsmall: 0.75rem;
+  --font-size-small: 0.875rem; 
+  --font-size-base: 1rem;
+  --font-size-large: 1.25rem; 
+  --font-size-xlarge: 1.5rem;
+    
 }
 
 /* Reset */
@@ -38,3 +47,24 @@ li {
 list-style: none;
 }
 
+p,
+li,
+a {
+  font-size: var(--font-size-base);
+}
+
+.alt-background-color {
+    background-color: var(--alt-background-color);
+}
+
+.text-color {
+    color: var(--text-color);
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+.content-margin-small {
+    margin: 1rem;
+} 
