@@ -1,6 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
 import useAuthStatus from '../../hooks/useAuthStatus';
-import SideBar from '../SideBar';
 
 const PrivateRoutes = () => {
     const isAuthenticated = useAuthStatus();
@@ -9,11 +8,7 @@ const PrivateRoutes = () => {
         return <Navigate to="/" replace />; 
     }
 
-    return (
-        <SideBar >
-            <Outlet />
-        </SideBar>
-    ); 
+    return <Outlet />;
 };
 
 export default PrivateRoutes;
