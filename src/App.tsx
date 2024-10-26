@@ -1,22 +1,13 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Dashboard from './Components/Dashboard/'
-import SideBar from './Components/SideBar'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Dashboard />
-  }
-])
+import { RouterProvider } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
+import router from './router'
 
 function App() {
 
   return (
-    <>
-      <SideBar>
-        <RouterProvider router={router} />
-      </SideBar>
-    </>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   )
 }
 
