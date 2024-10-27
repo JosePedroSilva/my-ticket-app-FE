@@ -1,3 +1,8 @@
 .chooseTypeContainer{
     margin: 100px;
 }
+
+.chooseTypeContainer h1{
+    font-weight: 400;
+    margin-bottom: var(--margin-large);
+}
