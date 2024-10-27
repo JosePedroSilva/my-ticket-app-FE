@@ -20,7 +20,7 @@
 }
 
 .loginbox a{
-  margin-top: var(--margin-xtra-small); 
+  margin-top: var(--margin-xsmall); 
   align-self: flex-end;
 }
 

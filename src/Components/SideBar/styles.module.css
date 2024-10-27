@@ -2,16 +2,69 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
+}
 
+.sideBarBG{
+    position: fixed;
+    background-color: var(--color-alt-background);
+    min-width: var(--side-bar-width); 
+    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.2); 
+    height: 100vh;
+    z-index: 100;
 }
 
 .sideBarContainer{
-    background-color: var(--color-alt-background);
-    flex:1;
-    min-width: 250px; 
-    box-shadow: 4px 0 5px rgba(0, 0, 0, 0.2); 
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
 }
 
 .contentWindowContainer{
-    flex:4;
+    margin-left: var(--side-bar-width);
+    overflow-y: auto;
 }
+
+.sideBarContainer .currentProjectsContainer{
+    margin-top: var(--margin-large);
+    padding-bottom: var(--padding-large);
+}
+
+.sideBarContainer .currentProjectsContainer p:first-of-type{
+    color: var(--color-accent);
+    margin-bottom: var(--margin-xsmall);
+}
+
+.sideBarContainer nav{
+    margin-top: var(--margin-large);
+}
+
+.sideBarContainer nav li{
+    margin-bottom: var(--margin-large);
+    cursor: pointer;
+    /* padding-left: var(--padding-small); */
+}
+
+/* The padding maybe cause some jumping check after logic is implemented */
+.sideBarContainer .active{
+    color: var(--color-background);
+    background-color: var(--color-accent);
+    border-radius: 50px;
+    padding: var(--padding-small);
+    width: 40%;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4) 
+}
+
+.recentEventsContainer{
+    margin-top: auto;
+}
+
+.recentEventsContainer p:first-of-type{
+    color: var(--color-accent);
+    margin-bottom: var(--margin-small);
+}
+
+.recentEventsContainer li{
+    margin-bottom: var(--margin-small);
+    cursor: pointer;
+}
+

@@ -21,14 +21,17 @@
   --border-radius: 10px;
   --border-radius-small: 5px;
 
-  --margin-xtra-small: 5px;
+  --margin-xsmall: 5px;
   --margin-small: 15px;
   --margin-medium: 30px;
   --margin-large: 45px;
 
+  --padding-xsmall: 5px;
   --padding-small: 10px;
   --padding-medium: 30px;
   --padding-large: 45px;
+
+  --side-bar-width: 400px;
 
     
 }
@@ -97,8 +100,29 @@ h2{
 }
 
 .content-margin-small {
-    margin: 1rem;
+    margin: var(--margin-small);
 } 
+
+.content-margin-medium {
+    margin: var(--margin-medium);
+}
+
+.content-margin-large {
+    margin: var(--margin-large);
+}
+
+.content-margin-sides-small {
+    margin: 0 var(--margin-small);
+}
+
+.content-margin-sides-medium {
+    margin: 0 var(--margin-medium);
+}
+
+.content-margin-sides-large {
+    margin: 0 var(--margin-large);
+}
+
 
 /* Flexbox container */
 .flex-container {
