@@ -9,7 +9,11 @@ export const registerUser = async (email: string, password: string) => {
         body: JSON.stringify({ email, password }),
     });
 
-    return response.json();
+    if (!response.ok) {
+        console.error('An error occurred registering the user with status ' + response.status);
+    }
+
+    return response;
 }
 
 export const loginUser = async (email: string, password: string) => {

@@ -18,8 +18,6 @@ const Login = () => {
             ...next,
         }
 
-        console.log(nextEvent.email, nextEvent.password);
-
         if (nextEvent.email && nextEvent.password) {
             nextEvent.submitDisabled = false;
         } else {

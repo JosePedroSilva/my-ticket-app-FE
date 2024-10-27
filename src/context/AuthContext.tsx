@@ -1,10 +1,11 @@
 import { createContext, useState, useEffect } from 'react';
-import { loginUser } from '../api/authApi';
+import { loginUser, registerUser } from '../api/authApi';
 import { ReactNode } from 'react';
 
 interface AuthContextType {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    user: any; // Replace 'any' with a more specific type if available (e.g., `UserType` or `null`)
+    user: any; 
+    register: (email: string, password: string) => Promise<void>;
     login: (email: string, password: string) => Promise<void>;
     logout: () => void;
 }
@@ -12,10 +13,12 @@ interface AuthContextType {
 // Provide a default empty implementation for the context to satisfy TypeScript
 const defaultAuthContext: AuthContextType = {
     user: null,
+    register: async () => {},
     login: async () => {},
-    logout: () => {}
+    logout: () => {},
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext<AuthContextType>(defaultAuthContext);
 
 interface AuthProviderProps {
@@ -32,6 +35,26 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
             setUser(JSON.parse(savedUser));
         }
     }, []);
+
+    const register = async (email: string, password: string) => {
+        const data = await registerUser(email, password);
+
+        if (!data.ok){
+            if (data.status === 409){
+                throw new Error('User already exists');
+            }
+
+            throw new Error('An error occurred with' + data.status);
+        }
+
+        if (data.ok){
+            const userData = await data.json();
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData.user));
+            localStorage.setItem('token', userData.token);
+        }
+    };
+
 
     const login = async (email: string, password: string) => {
         const data = await loginUser(email, password);
@@ -65,7 +88,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     );
