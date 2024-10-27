@@ -1,73 +1,30 @@
-.logincontainer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-  }
+.loginbox {
+  background-color: var(--color-alt-background);
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 700px;
+}
 
-  .loginbox {
-    background-color: var(--color-alt-background);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 700px;
-  }
-  
-  /* Header styling */
-  .loginbox h2 {
-    margin-bottom: 20px;
-    color: #1a3c50;
-  }
-  
-  /* Label styling */
-  .loginbox label {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
-    color: #1a3c50;
-    text-align: left;
-  }
-  
-  /* Input field styling */
-  .loginbox input[type="email"],
-  .loginbox input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  /* Button styling */
-  .loginbox button {
-    background-color: var(--color-accent); /* Teal button color */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 10px;
-  }
-  
-  .loginbox button:hover {
-    background-color: var(--color-accent-hover); /* Darker teal on hover */
-  }
-  
-  /* Link styling for "Create account" */
-  .loginbox .createaccount {
-    display: block;
-    margin-top: 15px;
-    font-size: 14px;
-    color: #1a7281; /* Teal color */
-    text-decoration: none;
-  }
-  
-  .loginbox .createaccount:hover {
-    text-decoration: underline;
-  }
-  
+.loginbox h2 {
+  margin-bottom: var(--margin-medium);
+}
+
+.loginbox input{
+  margin-bottom: var(--margin-small);
+}
+
+.loginbox button{
+  margin-top: var(--margin-small);
+  align-self: flex-end;
+}
+
+.loginbox a{
+  margin-top: var(--margin-xtra-small); 
+  align-self: flex-end;
+}
+
+.loginbox form {
+  display: flex;
+  flex-direction: column;
+}

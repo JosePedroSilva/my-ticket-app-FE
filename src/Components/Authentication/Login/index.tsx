@@ -1,4 +1,5 @@
 // import { useState } from 'react';
+import { Link } from 'react-router-dom';
 // import useAuth from '../../../hooks/useAuth';
 import styles from './styles.module.css'
 
@@ -18,18 +19,21 @@ const Login = () => {
     // };
 
     return (
-        <div className={styles.logincontainer}>
+        <div className='flex-container flex-container-center-screen'>
             <div className={styles.loginbox}>
                 <h2>Login</h2>
                 <form>
-                <label >Email:</label>
-                <input type="email" id="priority" name="priority" />
+                    <label>Email:</label>
+                    <input type="email" />
 
-                <label >Password:</label>
-                <input type="password" id="start-date" name="start-date" />
+                    <label>Password:</label>
+                    <input type="password" />
 
-                <button type="submit">Submit</button>
-                <a href="#" className={styles.createaccount}>Create account</a>
+                    <button className={`btn ${styles.loginBtn}`} type="submit">Submit</button>
+                    <Link to="/register" className={styles.createAccountLink}>
+                        Create account
+                    </Link>
+
                 </form>
             </div>
         </div>

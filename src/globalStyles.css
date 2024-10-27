@@ -17,6 +17,19 @@
   --font-size-base: 1rem;
   --font-size-large: 1.25rem; 
   --font-size-xlarge: 1.5rem;
+
+  --border-radius: 10px;
+  --border-radius-small: 5px;
+
+  --margin-xtra-small: 5px;
+  --margin-small: 15px;
+  --margin-medium: 30px;
+  --margin-large: 45px;
+
+  --padding-small: 10px;
+  --padding-medium: 30px;
+  --padding-large: 45px;
+
     
 }
 
@@ -55,6 +68,22 @@ a {
   font-size: var(--font-size-base);
 }
 
+a{
+  color: var(--color-accent);
+  text-decoration: none;
+  display: block;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+h2{
+  color: var(--color-text);
+}
+
+/* Global classes */
+
 .alt-background-color {
     background-color: var(--alt-background-color);
 }
@@ -70,3 +99,44 @@ a {
 .content-margin-small {
     margin: 1rem;
 } 
+
+/* Flexbox container */
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.flex-container-center-screen {
+    align-items: center;
+}
+
+/* Form styles */
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: var(--padding-small);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-small);
+    font-size: 14px;
+}
+
+.btn{
+  background-color: var(--color-accent); 
+  color: var(--color-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius-small);
+  cursor: pointer;
+  transition: background-color 1s ease;
+  font-size: var(--font-size-base);
+}
+
+.btn:hover {
+  background-color: var(--color-accent-hover); 
+}
+
+
