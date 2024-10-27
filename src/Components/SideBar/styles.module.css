@@ -44,6 +44,10 @@
     /* padding-left: var(--padding-small); */
 }
 
+.sideBarContainer nav li a{
+    color: var(--color-text);
+}
+
 /* The padding maybe cause some jumping check after logic is implemented */
 .sideBarContainer .active{
     color: var(--color-background);
@@ -52,6 +56,10 @@
     padding: var(--padding-small);
     width: 40%;
     box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.4) 
+}
+
+.sideBarContainer .active a{
+    color: var(--color-background);
 }
 
 .recentEventsContainer{

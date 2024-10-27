@@ -1,10 +1,44 @@
+import { Link, useLocation } from 'react-router-dom';
 import styles from './styles.module.css'
+
+
+const NAV_ITEMS = [
+    {
+        name: 'Dashboard',
+        icon: 'dashboard',
+        link: '/dashboard'
+    },
+    {
+        name: 'Projects',
+        icon: 'projects',
+        link: '/projects'
+    },
+    {
+        name: 'List',
+        icon: 'list',
+        link: '/list'
+    },
+    {
+        name: 'Timer',
+        icon: 'timer',
+        link: '/timer'
+    },
+    {
+        name: 'Settings',
+        icon: 'settings',
+        link: '/settings'
+    },
+]
 
 interface SideBarProps {
     children: React.ReactNode;
 }
 
 const SideBar: React.FC<SideBarProps> = ({children}) => {
+    const location = useLocation();
+
+    console.log(location.pathname)
+    
     return (
         <div className={styles.fullLayout}>  
             <div className={`${styles.sideBarBG}`}>
@@ -18,11 +52,14 @@ const SideBar: React.FC<SideBarProps> = ({children}) => {
 
                     <nav>
                         <ul>
-                            <li className={styles.active}>Dashboard</li>
-                            <li>Projects</li>
-                            <li>List</li>
-                            <li>Timer</li>
-                            <li>Settings</li>
+                            {NAV_ITEMS.map((item, index) => (
+                                <li key={index} className={location.pathname === item.link ? styles.active : undefined}>
+                                    <Link to={item.link}>
+                                        {/* <i className="material-icons">{item.icon}</i> */}
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
