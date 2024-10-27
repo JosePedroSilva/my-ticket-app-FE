@@ -5,7 +5,8 @@ import styles from '../styles.module.css'
 
 const INITIAL_STATE = {
     email: '',
-    password: ''
+    password: '',
+    submitDisabled: false,
 };
 
 const Login = () => {
@@ -15,6 +16,14 @@ const Login = () => {
         const nextEvent = {
             ...prev,
             ...next,
+        }
+
+        console.log(nextEvent.email, nextEvent.password);
+
+        if (nextEvent.email && nextEvent.password) {
+            nextEvent.submitDisabled = false;
+        } else {
+            nextEvent.submitDisabled = true;
         }
 
         return nextEvent;
@@ -47,7 +56,7 @@ const Login = () => {
                     <label>Password:</label>
                     <input type="password" onChange={handleChange}/>
 
-                    <button className={`btn ${styles.loginBtn}`} type="submit">Submit</button>
+                    <button disabled={state.submitDisabled} className={`btn ${styles.loginBtn}`} type="submit">Submit</button>
                     <Link to="/register" className={styles.createAccountLink}>
                         Create account
                     </Link>
