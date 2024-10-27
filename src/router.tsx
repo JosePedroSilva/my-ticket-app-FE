@@ -9,6 +9,7 @@ import Login from './Components/Authentication/Login';
 import Register from './Components/Authentication/Register';
 
 import Dashboard from './Components/Dashboard';
+import Logout from './Components/Authentication/Logout';
 
 const router = createBrowserRouter([
     {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
             { path: '/', element: <Login /> },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },
+            { path: '/logout', element: <Logout /> },
         ],
     },
     {
