@@ -6,6 +6,8 @@ import PrivateRoutes from './Components/RoutesHandling/PrivateRoutes';
 import DashboardLayout from './Components/layouts/DashboardLayouts';
 
 import Login from './Components/Authentication/Login';
+import Register from './Components/Authentication/Register';
+
 import Dashboard from './Components/Dashboard';
 
 const router = createBrowserRouter([
@@ -14,6 +16,7 @@ const router = createBrowserRouter([
         children: [
             { path: '/', element: <Login /> },
             { path: '/login', element: <Login /> },
+            { path: '/register', element: <Register /> },
         ],
     },
     {
