@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './styles.module.css'
 
-
 const NAV_ITEMS = [
     {
         name: 'Dashboard',
@@ -72,7 +71,9 @@ const SideBar: React.FC<SideBarProps> = ({children}) => {
                     </div>
                 </div>
             </div>
-            <div className={styles.contentWindowContainer}>{children}</div>
+            <div className={styles.contentWindowContainer}>
+                {children}
+            </div>
         </div>
     )
 }

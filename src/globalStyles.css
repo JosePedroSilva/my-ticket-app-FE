@@ -168,4 +168,9 @@ input[type="text"] {
   cursor: not-allowed;
 }
 
+.dualBtnContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
 
