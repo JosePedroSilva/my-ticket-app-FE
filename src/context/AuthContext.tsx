@@ -3,6 +3,7 @@ import { loginUser, registerUser } from '../api/authApi';
 import { ReactNode } from 'react';
 
 interface AuthContextType {
+    authProviderIsLoading: boolean;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     user: any; 
     register: (email: string, password: string) => Promise<void>;
@@ -12,6 +13,7 @@ interface AuthContextType {
 
 // Provide a default empty implementation for the context to satisfy TypeScript
 const defaultAuthContext: AuthContextType = {
+    authProviderIsLoading: true,
     user: null,
     register: async () => {},
     login: async () => {},
@@ -26,14 +28,17 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
+    const [authProviderIsLoading, setAuthProviderLoading] = useState(true);
     const [user, setUser] = useState(null);
 
     // Load user from localStorage on app start
     useEffect(() => {
+        setAuthProviderLoading(true);
         const savedUser = localStorage.getItem('user');
         if (savedUser) {
             setUser(JSON.parse(savedUser));
         }
+        setAuthProviderLoading(false);
     }, []);
 
     const register = async (email: string, password: string) => {
@@ -88,7 +93,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout, register }}>
+        <AuthContext.Provider value={{ authProviderIsLoading, user, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     );

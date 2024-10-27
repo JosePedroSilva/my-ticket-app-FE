@@ -7,9 +7,10 @@ import DashboardLayout from './Components/layouts/DashboardLayouts';
 
 import Login from './Components/Authentication/Login';
 import Register from './Components/Authentication/Register';
+import Logout from './Components/Authentication/Logout';
 
 import Dashboard from './Components/Dashboard';
-import Logout from './Components/Authentication/Logout';
+import ProjectsPage from './Components/ProjectsPage';
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
                 element: <DashboardLayout />, 
                 children: [
                     { path: '/dashboard', element: <Dashboard /> },
+                    { path: '/projects', element: <ProjectsPage /> },
                 ],
             },
         ],
