@@ -35,10 +35,27 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const login = async (email: string, password: string) => {
         const data = await loginUser(email, password);
-        console.log(data);
-        setUser(data.user);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        localStorage.setItem('token', data.token);
+
+        if (!data.ok){
+            if (data.status === 404){
+                throw new Error('User not found');
+                //TODO: handle error and inform the user
+            }
+
+            if (data.status === 401){
+                throw new Error('Invalid password');
+                //TODO: handle error and inform the user
+            }
+
+            throw new Error('An error occurred with' + data.status);
+        }
+
+        if (data.ok){
+            const userData = await data.json();
+            setUser(userData);
+            localStorage.setItem('user', JSON.stringify(userData.user));
+            localStorage.setItem('token', userData.token);
+        }
     };
 
     const logout = () => {

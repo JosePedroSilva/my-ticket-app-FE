@@ -13,7 +13,7 @@ export const registerUser = async (email: string, password: string) => {
 }
 
 export const loginUser = async (email: string, password: string) => {
-    const respose = await fetch(`${API_URL}login`, {
+    const response = await fetch(`${API_URL}login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -21,5 +21,9 @@ export const loginUser = async (email: string, password: string) => {
         body: JSON.stringify({ email, password }),
     });
 
-    return respose.json();
+    if (!response.ok) {
+        console.error('An error occurred logging in with status ' + response.status);
+    }
+
+    return response;
 }
