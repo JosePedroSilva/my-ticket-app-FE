@@ -85,7 +85,7 @@ const AddNewTask = () => {
                 <div className='form-single-row'>
                     <div className='form-single-row-input-width'>
                     <label>Priority</label>
-                        <select onChange={handleChange} name="taskStatus" defaultValue={PRIORITY[1]}>
+                        <select onChange={handleChange} name="taskPriority" defaultValue={PRIORITY[1]}>
                             {PRIORITY.map(priority => (
                                 <option key={priority} value={priority}>{priority}</option>
                             ))}

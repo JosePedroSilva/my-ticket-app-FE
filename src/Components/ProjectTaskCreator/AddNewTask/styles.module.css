@@ -13,3 +13,7 @@
 .addNewTaskContainer textarea{
     margin-bottom: var(--margin-small);
 }
+
+.addNewTaskContainer .projectStatusContainer{
+    width: 100px;
+}

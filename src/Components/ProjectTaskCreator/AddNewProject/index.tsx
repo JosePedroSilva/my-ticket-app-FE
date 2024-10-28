@@ -1,6 +1,11 @@
 import { useReducer } from 'react';
 import styles from '../AddNewTask/styles.module.css';
 
+const STATUS = [
+    'active',
+    'inactive',
+    'archived'
+];
 
 const INITIAL_STATE = {
     projectName: '',
@@ -37,7 +42,16 @@ const AddNewProject = () => {
                 
                 <label>Project name:</label>
                 <input type="text" onChange={handleChange} name='taskName'/>
-                
+
+                <div className={styles.projectStatusContainer}>
+                    <label>Status</label>
+                        <select onChange={handleChange} name="taskPriority" defaultValue={STATUS[0]}>
+                            {STATUS.map(status => (
+                                <option key={status} value={status}>{status}</option>
+                            ))}
+                        </select>
+                    </div>
+
                 <div className='form-single-row'>
                     <div className='form-single-row-input-width'>
                         <label>Start date:</label>
