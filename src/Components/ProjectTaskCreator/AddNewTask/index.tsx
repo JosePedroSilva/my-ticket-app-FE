@@ -117,6 +117,7 @@ const AddNewTask = () => {
                 <label>Description</label>
                 <textarea name="taskDescription" onChange={handleChange} rows={20} />
 
+                <button type='submit' className='btn'>Save</button>
 
             </form>
 

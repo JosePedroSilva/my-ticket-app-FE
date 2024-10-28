@@ -9,6 +9,7 @@
 
 .addNewTaskContainer select,
 .addNewTaskContainer input[type="text"],
-.addNewTaskContainer input[type="date"]{
+.addNewTaskContainer input[type="date"],
+.addNewTaskContainer textarea{
     margin-bottom: var(--margin-small);
 }
