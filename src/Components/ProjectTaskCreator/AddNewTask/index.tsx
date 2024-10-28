@@ -30,7 +30,6 @@ const PRIORITY = [
     'Low',
     'Medium',
     'High',
-    'Critical'
 ];
 
 const INITIAL_STATE = {
