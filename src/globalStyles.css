@@ -140,12 +140,19 @@ h2{
 /* Form styles */
 input[type="email"],
 input[type="password"],
-input[type="text"] {
+input[type="text"],
+input[type='date'],
+textarea,
+select{
     width: 100%;
     padding: var(--padding-small);
     border: 1px solid #ccc;
     border-radius: var(--border-radius-small);
     font-size: 14px;
+}
+
+input[type='date'] {
+  font-family: var(--font-family);
 }
 
 .btn{
@@ -173,4 +180,9 @@ input[type="text"] {
   justify-content: space-around;
 }
 
+.form-single-row{
+  display: flex;}
 
+.form-single-row .form-single-row-input-width{
+  width: 100%;
+}

@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-// import styles from './styles.module.css';
+import styles from './styles.module.css';
 
 const MOCK_PROJECTS = [
     {
@@ -60,7 +60,7 @@ const AddNewTask = () => {
     console.log(state);
 
     return (
-        <div >
+        <div className={styles.addNewTaskContainer}>
             <h1>New task</h1>
             
             <form>
@@ -74,25 +74,35 @@ const AddNewTask = () => {
 
                 <label>Task name:</label>
                 <input type="text" onChange={handleChange} name='taskName'/>
-
-                <label>Priority</label>
-                <input type="text" onChange={handleChange} name='taskPriority'/>
-
-                <label>Status</label>
-                <select onChange={handleChange} name="taskStatus">
-                    {STATUS.map(status => (
-                        <option key={status} value={status}>{status}</option>
-                    ))}
-                </select>
-
-                <label>Start date:</label>
-                <input type="date" onChange={handleChange} name='taskStartDate' />
-
-                <label>Due date:</label>
-                <input type="date" onChange={handleChange} name='taskDueDate' />
                 
+                <div className='form-single-row'>
+                    <div className='form-single-row-input-width'>
+                        <label>Priority</label>
+                        <input type="text" onChange={handleChange} name='taskPriority'/>
+                    </div>
+                    <div className='form-single-row-input-width'>
+                        <label>Status</label>
+                        <select onChange={handleChange} name="taskStatus">
+                            {STATUS.map(status => (
+                                <option key={status} value={status}>{status}</option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+
+                <div className='form-single-row'>
+                    <div className='form-single-row-input-width'>
+                        <label>Start date:</label>
+                        <input type="date" onChange={handleChange} name='taskStartDate' />
+                    </div>
+                    <div className='form-single-row-input-width'>
+                        <label>Due date:</label>
+                        <input type="date" onChange={handleChange} name='taskDueDate' />
+                    </div>
+                </div>
+     
                 <label>Description</label>
-                <textarea name="taskDescription" onChange={handleChange} />
+                <textarea name="taskDescription" onChange={handleChange} rows={10} />
 
 
             </form>
