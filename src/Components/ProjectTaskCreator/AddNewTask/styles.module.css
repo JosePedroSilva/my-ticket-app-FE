@@ -1,3 +1,14 @@
 .addNewTaskContainer{
-    margin: var(--margin-large)
+    margin: var(--margin-large);
+    min-width: 800px;
+}
+
+.addNewTaskContainer h1{
+    margin-bottom: var(--margin-large);
+}
+
+.addNewTaskContainer select,
+.addNewTaskContainer input[type="text"],
+.addNewTaskContainer input[type="date"]{
+    margin-bottom: var(--margin-small);
 }
