@@ -112,7 +112,7 @@ const AddNewTask = () => {
                 </div>
      
                 <label>Description</label>
-                <textarea name="taskDescription" onChange={handleChange} rows={20} />
+                <textarea name="taskDescription" onChange={handleChange} rows={10} />
 
                 <button type='submit' className='btn'>Save</button>
 
