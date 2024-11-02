@@ -8,12 +8,13 @@ const STATUS = [
 ];
 
 const INITIAL_STATE = {
-    projectName: '',
-    projectDescription: '',
-    projectStartDate: '',
-    projectDueDate: '',
-    projectAuthor: '',
-    projectCreatedDate: '',  
+    name: '',
+    description: '',
+    status: STATUS[0],
+    startDate: '',
+    dueDate: '',
+    AuthProvider: '',
+    createdAt: '',  
 };
 
 const AddNewProject = () => {
@@ -41,11 +42,11 @@ const AddNewProject = () => {
             <form>
                 
                 <label>Project name:</label>
-                <input type="text" onChange={handleChange} name='taskName'/>
+                <input type="text" onChange={handleChange} name='name'/>
 
                 <div className={styles.projectStatusContainer}>
                     <label>Status</label>
-                        <select onChange={handleChange} name="taskPriority" defaultValue={STATUS[0]}>
+                        <select onChange={handleChange} name="status" defaultValue={STATUS[0]}>
                             {STATUS.map(status => (
                                 <option key={status} value={status}>{status}</option>
                             ))}
@@ -55,16 +56,16 @@ const AddNewProject = () => {
                 <div className='form-single-row'>
                     <div className='form-single-row-input-width'>
                         <label>Start date:</label>
-                        <input type="date" onChange={handleChange} name='taskStartDate' />
+                        <input type="date" onChange={handleChange} name='startDate' />
                     </div>
                     <div className='form-single-row-input-width'>
                         <label>Due date:</label>
-                        <input type="date" onChange={handleChange} name='taskDueDate' />
+                        <input type="date" onChange={handleChange} name='dueDate' />
                     </div>
                 </div>
      
                 <label>Description</label>
-                <textarea name="taskDescription" onChange={handleChange} rows={20} />
+                <textarea name="description" onChange={handleChange} rows={20} />
 
                 <button type='submit' className='btn'>Save</button>
 
