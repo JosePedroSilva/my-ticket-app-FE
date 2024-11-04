@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 import styles from '../AddNewTask/styles.module.css';
 
+import { createNewProject } from '../../../api/projectsApi';
+
 const STATUS = [
     'active',
     'inactive',
@@ -35,11 +37,21 @@ const AddNewProject = () => {
 
     console.log(state);
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        const { name, description, status, startDate, dueDate } = state;
+
+        const response = await createNewProject(name, description, status, startDate, dueDate);
+
+        console.log(await response?.json())
+
+    }
+
     return (
         <div className={styles.addNewTaskContainer}>
             <h1>New project</h1>
             
-            <form>
+            <form onSubmit={handleSubmit}>
                 
                 <label>Project name:</label>
                 <input type="text" onChange={handleChange} name='name'/>
