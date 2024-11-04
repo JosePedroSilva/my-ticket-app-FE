@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, ReactNode } from 'react';
 import { loginUser, registerUser } from '../api/authApi';
-import { ReactNode } from 'react';
+import useStore from '../hooks/useStore';
 
 interface AuthContextType {
     authProviderIsLoading: boolean;
@@ -11,7 +11,6 @@ interface AuthContextType {
     logout: () => void;
 }
 
-// Provide a default empty implementation for the context to satisfy TypeScript
 const defaultAuthContext: AuthContextType = {
     authProviderIsLoading: true,
     user: null,
@@ -31,7 +30,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [authProviderIsLoading, setAuthProviderLoading] = useState(true);
     const [user, setUser] = useState(null);
 
-    // Load user from localStorage on app start
+    const { user: storeUser, setStoreUser } = useStore();
+    console.log(storeUser);
+
     useEffect(() => {
         setAuthProviderLoading(true);
         const savedUser = localStorage.getItem('user');
@@ -55,7 +56,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         if (data.ok){
             const userData = await data.json();
             setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData.user));
+            setStoreUser(userData.user);
             localStorage.setItem('token', userData.token);
         }
     };
@@ -81,14 +82,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         if (data.ok){
             const userData = await data.json();
             setUser(userData);
-            localStorage.setItem('user', JSON.stringify(userData.user));
+            setStoreUser(userData.user);
             localStorage.setItem('token', userData.token);
         }
     };
 
     const logout = () => {
         setUser(null);
-        localStorage.removeItem('user');
+        setStoreUser({id: null, username: null, email: ''});
         localStorage.removeItem('token');
     };
 
