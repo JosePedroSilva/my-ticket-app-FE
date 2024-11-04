@@ -15,7 +15,6 @@ const INITIAL_STATE = {
     status: STATUS[0],
     startDate: '',
     dueDate: '',
-    AuthProvider: '',
     createdAt: '',  
 };
 
