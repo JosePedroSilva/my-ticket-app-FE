@@ -7,6 +7,7 @@ export const createNewProject = async (name: string, description: string, status
     }
 
     const token = localStorage.getItem('token');
+    console.log('token used on the request', token);
     const response = await fetch(`${API_URL}create-project`, {
         method: 'POST',
         headers: {
@@ -21,4 +22,21 @@ export const createNewProject = async (name: string, description: string, status
     }
 
     return response;
+}
+
+export const getProjects = async () => {
+    const token = localStorage.getItem('token');
+    const response = await fetch(`${API_URL}get-projects`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    if (!response.ok) {
+        console.error('An error occurred fetching the projects with status ' + response.status);
+    }
+
+    return response.json();
 }
