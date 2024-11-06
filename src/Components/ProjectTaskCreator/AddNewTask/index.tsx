@@ -33,18 +33,18 @@ const PRIORITY = [
 ];
 
 const INITIAL_STATE = {
-    taskName: '',
-    taskDescription: '',
-    taskProject: '',
-    taskPriority: PRIORITY[1],
-    taskStatus: STATUS[0],	
-    taskDueDate: '',
-    taskStartDate: '',
-    taskAssignee: '',
+    name: '',
+    description: '',
+    project: '',
+    priority: PRIORITY[1],
+    status: STATUS[0],	
+    dueDate: '',
+    startDate: '',
+    assignee: '',
     parentTask: null,
-    taskCreatedDate: '',
-    taskAuthor: '',
-    taskComments: [],
+    createAt: '',
+    author: '',
+    comments: [],
 };
 
 const AddNewTask = () => {
@@ -72,19 +72,19 @@ const AddNewTask = () => {
             <form>
                 
                 <label>Project:</label>
-                <select onChange={handleChange} name="taskProject">
+                <select onChange={handleChange} name="project">
                     {MOCK_PROJECTS.map(project => (
                         <option  key={project.id} value={project.id}>{project.name}</option>
                     ))}
                 </select>
 
                 <label>Task name:</label>
-                <input type="text" onChange={handleChange} name='taskName'/>
+                <input type="text" onChange={handleChange} name='name'/>
                 
                 <div className='form-single-row'>
                     <div className='form-single-row-input-width'>
                     <label>Priority</label>
-                        <select onChange={handleChange} name="taskPriority" defaultValue={PRIORITY[1]}>
+                        <select onChange={handleChange} name="priority" defaultValue={PRIORITY[1]}>
                             {PRIORITY.map(priority => (
                                 <option key={priority} value={priority}>{priority}</option>
                             ))}
@@ -92,7 +92,7 @@ const AddNewTask = () => {
                     </div>
                     <div className='form-single-row-input-width'>
                         <label>Status</label>
-                        <select onChange={handleChange} name="taskStatus" defaultValue={STATUS[0]}>
+                        <select onChange={handleChange} name="status" defaultValue={STATUS[0]}>
                             {STATUS.map(status => (
                                 <option key={status} value={status}>{status}</option>
                             ))}
@@ -103,16 +103,16 @@ const AddNewTask = () => {
                 <div className='form-single-row'>
                     <div className='form-single-row-input-width'>
                         <label>Start date:</label>
-                        <input type="date" onChange={handleChange} name='taskStartDate' />
+                        <input type="date" onChange={handleChange} name='startDate' />
                     </div>
                     <div className='form-single-row-input-width'>
                         <label>Due date:</label>
-                        <input type="date" onChange={handleChange} name='taskDueDate' />
+                        <input type="date" onChange={handleChange} name='dueDate' />
                     </div>
                 </div>
      
                 <label>Description</label>
-                <textarea name="taskDescription" onChange={handleChange} rows={10} />
+                <textarea name="description" onChange={handleChange} rows={10} />
 
                 <button type='submit' className='btn'>Save</button>
 
