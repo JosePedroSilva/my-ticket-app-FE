@@ -12,11 +12,13 @@ const ProjectTaskCreator: React.FC = () => {
         if (view === 'none') {
             setView('chooseType');
         } else {
-            setView('none');
+            handleClose();
         }
     }
 
-    console.log(view);
+    const handleClose = () => {
+        setView('none');
+    }
 
     const handleNewTaskClick = () => {
         setView('addTask');
@@ -36,7 +38,7 @@ const ProjectTaskCreator: React.FC = () => {
                 {view === 'addTask' && <AddNewTask/>}
             </div>
             <div className={`${styles.chooseTypeContainer} ${view === 'addProject' ? styles.active : ''}`}>
-                {view === 'addProject' && <AddNewProject/>}
+                {view === 'addProject' && <AddNewProject handleClose={handleClose} />}
             </div>
         </div>
     )

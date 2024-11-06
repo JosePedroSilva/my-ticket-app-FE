@@ -18,7 +18,11 @@ const INITIAL_STATE = {
     createdAt: '',  
 };
 
-const AddNewProject = () => {
+interface AddNewProjectProps {
+    handleClose: () => void;
+}
+
+const AddNewProject = ({ handleClose }: AddNewProjectProps) => {
     const [state, dispatch] = useReducer((prev: typeof INITIAL_STATE, next: Partial<typeof INITIAL_STATE>) => {
         const nextEvent = {
             ...prev,
@@ -34,15 +38,21 @@ const AddNewProject = () => {
         dispatch({ [name]: value });
     }
 
-    console.log(state);
-
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const { name, description, status, startDate, dueDate } = state;
 
         const response = await createNewProject(name, description, status, startDate, dueDate);
 
+
+
+        console.log(await response);
         console.log(await response?.json())
+
+        if (response && response.ok){
+            console.log('Project created');
+            handleClose();
+        }
 
     }
 
