@@ -26,7 +26,7 @@ export const createNewProject = async (name: string, description: string, status
 
 export const getProjects = async () => {
     const token = localStorage.getItem('token');
-    const response = await fetch(`${API_URL}get-projects`, {
+    const response = await fetch(`${API_URL}all-projects`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

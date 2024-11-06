@@ -1,24 +1,6 @@
-import { useReducer } from 'react';
+import { useReducer, useEffect, useState } from 'react';
 import styles from './styles.module.css';
-
-const MOCK_PROJECTS = [
-    {
-        id: 1,
-        name: 'Project 1'
-    },
-    {
-        id: 2,
-        name: 'Project 2'
-    },
-    {
-        id: 3,
-        name: 'Project 3'
-    },
-    {
-        id: 4,
-        name: 'Project 4'
-    }
-];
+import { getProjects } from '../../../api/projectsApi';
 
 const STATUS = [
     'To Do',
@@ -48,6 +30,7 @@ const INITIAL_STATE = {
 };
 
 const AddNewTask = () => {
+    const [projects, setProjects] = useState<{ id: number; name: string; }[]>([]);
     const [state, dispatch] = useReducer((prev: typeof INITIAL_STATE, next: Partial<typeof INITIAL_STATE>) => {
         const nextEvent = {
             ...prev,
@@ -56,6 +39,16 @@ const AddNewTask = () => {
 
         return nextEvent;
     }, INITIAL_STATE);
+
+    useEffect(() => {
+            const fetchProjects = async () => {
+                const userProjects = await getProjects();
+                setProjects(userProjects);
+                console.log(userProjects);
+            };
+    
+            fetchProjects();
+        }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -73,7 +66,7 @@ const AddNewTask = () => {
                 
                 <label>Project:</label>
                 <select onChange={handleChange} name="project">
-                    {MOCK_PROJECTS.map(project => (
+                    {projects.map(project => (
                         <option  key={project.id} value={project.id}>{project.name}</option>
                     ))}
                 </select>
